@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fantasists Production</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;700;900&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --dim: rgba(255,255,255,0.45);
+      --accent: linear-gradient(135deg, #a855f7, #3b82f6, #ec4899);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 30px 60px;
+      mix-blend-mode: normal;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.65), transparent);
+    }
+
+    html {
+  scroll-behavior: smooth;
+}
+
+    .logo {
+  width: 70px;
+  height: auto;
+}
+
+    .nav-links {
+      display: flex;
+      gap: 48px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      padding: 25px 50px;
+    }
+    .nav-links a:hover { opacity: 1; }
+
+    /* ── HERO ── */
+    #hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .hero-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+   z-index: 1;
+}
+
+.hero-media.is-loaded {
+  opacity: 1;
+    }
+
+    .hero-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  transition: opacity 0.6s ease;
+}
+
+    /* placeholder gradient when no real image/video */
+    .hero-placeholder {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+    }
+
+    .hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.4),
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.5)
+  );
+  z-index: 2;
+    }
+
+    .hero-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      z-index: 3;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(52px, 9vw, 130px);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      line-height: 1;
+      animation: fadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+    @keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+    .hero-sub {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(12px, 1.4vw, 16px);
+      letter-spacing: 0.28em;
+      font-weight: 300;
+      margin-top: 18px;
+      opacity: 0.9;
+      animation: fadeUp 1.2s ease both;
+      animation-delay: 0.3s;
+    }
+
+    /* ── STATEMENT ── */
+    #statement {
+      background: #000;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 40px;
+      text-align: center;
+    }
+
+    .statement-text {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(36px, 6.5vw, 88px);
+      font-weight: 700;
+      line-height: 1.18;
+      max-width: 900px;
+    }
+
+    .statement-text span {
+      display: block;
+    }
+
+    .statement-text .line2 {
+      margin-top: 0.6em;
+    }
+
+    /* ── CINEMATIC ── */
+    #cinematic {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .cinematic-media {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 80%; /* 👈 THIS IS THE MAGIC */
+  top: 0;
+  left: 0;
+}
+
+    .cinematic-overlay {
+       position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.15),
+    rgba(0,0,0,0.5)
+  );
+    }
+
+    .cinematic-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .cinematic-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(28px, 4vw, 64px);
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  line-height: 1.5;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+}
+
+.cinematic-text p + p {
+  margin-top: 0.8em;
+}
+
+@keyframes cinematicFade {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cinematic-text p {
+  animation: cinematicFade 1.2s ease forwards;
+  opacity: 0;
+}
+
+.cinematic-text p:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+    /* ── FEATURED WORK ── */
+    #work {
+      background: #000;
+    }
+
+    .work-header {
+      text-align: center;
+      padding: 120px 40px 40px;
+      font-family: 'Figtree', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      color: var(--dim);
+    }
+
+    .work-grid {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-item {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .work-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('grain.png');
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+    .work-item-media {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    .work-item:hover .work-item-media {
+      transform: translateY(-10px);
+  opacity: 1;
+    }
+
+    /* placeholder backgrounds for work items */
+    .work-item-bg {
+      position: absolute;
+      inset: 0;
+    }
+    .work-item-bg.palace { background: linear-gradient(160deg, #2c1a0e, #5c3d1e, #8b6914); }
+    .motion-soon {
+  background: url('Motion.png') center/cover no-repeat;
+}
+    .work-item-bg.fragments { background: linear-gradient(160deg, #1a0a00, #3d1a0a, #8b4513); }
+
+    .work-item-bottom {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: #000;
+      padding: 20px 36px;
+    }
+
+    .work-item-title {
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(13px, 1.5vw, 17px);
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      opacity: 0.7;
+  transition: all 0.4s ease;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: #000;
+      padding: 140px 80px 140px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .about-label {
+      font-family: 'Figtree', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      color: var(--dim);
+      margin-bottom: 80px;
+      padding-bottom: 20px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 20px;
+      display: inline-block;
+    }
+
+    .about-body p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(22px, 3vw, 38px);
+      font-weight: 300;
+      line-height: 1.55;
+      max-width: 720px;
+      margin-bottom: 1.4em;
+    }
+
+    .about-tagline {
+      font-size: clamp(13px, 1.2vw, 16px) !important;
+      color: var(--dim) !important;
+      margin-top: 20px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: radial-gradient(circle at center, #111 0%, #000 70%);
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 100px 40px;
+    }
+
+    .contact-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(28px, 4.5vw, 62px);
+      font-weight: 300;
+      line-height: 1.3;
+      margin-bottom: 56px;
+    }
+
+    .contact-email {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(16px, 1.8vw, 22px);
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .contact-email:hover { opacity: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 28px 40px;
+      text-align: center;
+      font-family: 'Figtree', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      color: var(--dim);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s ease, transform 0.9s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .nav-links { gap: 16px; }
+      .nav-links a {
+  font-size: 12px;
+  padding: 10px 12px;
+}
+      #about { padding: 80px 28px; }
+      .hero-title { font-size: clamp(42px, 12vw, 80px); }
+      .work-item {
+  height: auto;
+  aspect-ratio: 9/16; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <!-- Logo SVG (approximated from your icon) -->
+    <a href="#">
+  <img src="logo.png" class="logo">
+</a>
+
+    <ul class="nav-links">
+      <li><a href="#work">WORK</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+
+  <img src="poster.jpg" class="hero-poster">
+
+  <video class="hero-media" muted loop playsinline preload="auto">
+    <source src="Hero.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">FANTASISTS</h1>
+    <p class="hero-sub">PRODUCTION</p>
+  </div>
+
+</section>
+
+  <!-- STATEMENT -->
+  <section id="statement">
+    <div class="statement-text reveal">
+      <span>We don't create videos.</span>
+      <span class="line2">We craft experiences.</span>
+    </div>
+  </section>
+
+  <!-- CINEMATIC -->
+  <section id="cinematic">
+    <!--
+      REPLACE: Add your mountain/landscape video or image here.
+        <video class="hero-media" autoplay muted loop playsinline>
+          <source src="your-landscape-video.mp4" type="video/mp4">
+        </video>
+    -->
+    <img class="cinematic-media" src="cinematic.jpg" alt="Cinematic landscape">
+    <div class="cinematic-overlay"></div>
+    <div class="cinematic-content">
+      <div class="cinematic-text reveal">
+        <p>Every place has a story.</p>
+        <p>We make you feel it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED WORK -->
+  <section id="work">
+    <p class="work-header reveal">FEATURED WORK</p>
+    <div class="work-grid">
+
+      <!-- Project 1 -->
+      <div class="work-item">
+        <!--
+          REPLACE: <video class="work-item-media" autoplay muted loop playsinline>
+                     <source src="palace-experience.mp4" type="video/mp4">
+                   </video>
+        -->
+        <video class="work-item-media" autoplay muted loop playsinline>
+  <source src="palace-experience.mp4" type="video/mp4">
+</video>
+        <div class="work-item-bottom">
+          <p class="work-item-title">THE PALACE EXPERIENCE</p>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="work-item">
+
+  <div class="work-item-bg motion-soon"></div>
+
+  <div class="work-item-bottom">
+    <p class="work-item-title">MOTION OF THE WORLD (Coming Soon)</p>
+  </div>
+
+</div>
+
+      <!-- Project 3 -->
+      <div class="work-item">
+
+  <video class="work-item-media" autoplay muted loop playsinline>
+    <source src="fragments.mp4" type="video/mp4">
+  </video>
+
+  <div class="work-item-overlay">
+    <p class="coming-text">COMING SOON</p>
+  </div>
+
+  <div class="work-item-bottom">
+    <p class="work-item-title">FRAGMENTS OF MOMENTS (Coming Soon)</p>
+  </div>
+
+</div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <span class="about-label reveal">ABOUT</span>
+    <div class="about-body">
+      <p class="reveal">Fantasists Production is a cinematic storytelling studio focused on creating immersive visual experiences across travel, culture, and human emotion.</p>
+      <p class="reveal">Every frame is crafted with intention — blending direction, production, and post into one seamless vision.</p>
+      <p class="about-tagline reveal">We don't chase trends. We chase truth.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="contact-heading reveal">Let's create something<br>unforgettable.</h2>
+    <a class="contact-email" href="mailto:hello@fantasistsproduction.com">hello@fantasistsproduction.com</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 FANTASISTS PRODUCTION</p>
+  </footer>
+
+  <script>
+     // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => observer.observe(el));
+
+  // HERO VIDEO FADE
+  const video = document.querySelector('.hero-media');
+const poster = document.querySelector('.hero-poster');
+
+video.addEventListener('loadeddata', () => {
+
+  // Jump to cinematic moment BEFORE play
+  video.currentTime = 1.2;
+
+  // Wait (poster time)
+  setTimeout(() => {
+
+    video.play(); // start AFTER setting time
+    video.classList.add('is-loaded');
+    poster.style.opacity = '0';
+
+  }, 750);
+
+});
+</script>
+</body>
+</html>
