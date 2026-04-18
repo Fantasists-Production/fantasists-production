@@ -88,8 +88,7 @@
 
   z-index: 1; /* BELOW poster */
 
-  transform: scale(1.01);
-  will-change: transform;
+  will-change: opacity;
 }
 
 /* when video is ready */
@@ -108,9 +107,8 @@
 
   z-index: 2; /* ABOVE video */
 
-  transition: opacity 0.8s ease;
+  transition: opacity 0.6s ease;
 
-  transform: scale(1.01);
 }
 
     /* placeholder gradient when no real image/video */
@@ -172,6 +170,11 @@
       animation: fadeUp 1.2s ease both;
       animation-delay: 0.3s;
     }
+    .hero-media,
+.hero-poster {
+  backface-visibility: hidden;
+  transform: translate3d(0,0,0);
+}
 
     /* ── STATEMENT ── */
     #statement {
