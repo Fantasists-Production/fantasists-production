@@ -84,6 +84,8 @@
   opacity: 0;
   transition: opacity 1.5s ease;
    z-index: 1;
+   transform: scale(1.01);
+  will-change: transform;
 }
 
 .hero-media.is-loaded {
@@ -596,13 +598,13 @@ const poster = document.querySelector('.hero-poster');
 
 video.addEventListener('loadeddata', () => {
 
-  // Jump to cinematic moment BEFORE play
-  video.currentTime = 1.2;
+  // Wait for video to be ready properly
+  video.pause();
 
-  // Wait (poster time)
   setTimeout(() => {
+     // jump AFTER slight delay
 
-    video.play(); // start AFTER setting time
+    video.play();
     video.classList.add('is-loaded');
     poster.style.opacity = '0';
 
