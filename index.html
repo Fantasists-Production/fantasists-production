@@ -66,41 +66,51 @@
     }
     .nav-links a:hover { opacity: 1; }
 
-    /* ── HERO ── */
-    #hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
+    /* — HERO — */
+#hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
 
-    .hero-media {
+/* VIDEO */
+.hero-media {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+
   opacity: 0;
-  transition: opacity 1.5s ease;
-   z-index: 1;
-   transform: scale(1.01);
+  transition: opacity 1.2s ease;
+
+  z-index: 1; /* BELOW poster */
+
+  transform: scale(1.01);
   will-change: transform;
 }
 
+/* when video is ready */
 .hero-media.is-loaded {
   opacity: 1;
-    }
+}
 
-    .hero-poster {
+/* POSTER (ON TOP) */
+.hero-poster {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
-  z-index: 0;
-  transition: opacity 0.6s ease;
+
+  z-index: 2; /* ABOVE video */
+
+  transition: opacity 0.8s ease;
+
+  transform: scale(1.01);
 }
 
     /* placeholder gradient when no real image/video */
@@ -467,13 +477,16 @@
   <!-- HERO -->
   <section id="hero">
 
-  <img src="poster.jpg" class="hero-poster">
+  <!-- Poster -->
+  <img src="poster.jpg" class="hero-poster" />
 
-  <video class="hero-media" muted loop playsinline preload="auto">
+  <!-- Video -->
+  <video class="hero-media" autoplay muted loop playsinline preload="auto">
     <source src="Hero.mp4" type="video/mp4">
   </video>
 
   <div class="hero-overlay"></div>
+
   <div class="hero-content">
     <h1 class="hero-title">FANTASISTS</h1>
     <p class="hero-sub">PRODUCTION</p>
@@ -598,17 +611,12 @@ const poster = document.querySelector('.hero-poster');
 
 video.addEventListener('loadeddata', () => {
 
-  // Wait for video to be ready properly
-  video.pause();
-
   setTimeout(() => {
-     // jump AFTER slight delay
 
-    video.play();
     video.classList.add('is-loaded');
     poster.style.opacity = '0';
 
-  }, 750);
+  }, 700); // 0.7 sec poster hold
 
 });
 </script>
