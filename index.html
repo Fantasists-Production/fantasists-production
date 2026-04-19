@@ -357,6 +357,9 @@
 section {
   padding: 180px 0;
 }
+.page {
+  padding: 0;
+}
 
 .container {
   max-width: 1100px;
@@ -377,12 +380,61 @@ section {
 /* ========================= */
 
 .clients {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;   /* 🔥 key change */
+  justify-content: center;
+  padding-top: 180px;        /* 🔥 control position */
   text-align: center;
+  position: relative;
 }
 
+.clients-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.clients-content .section-label {
+  margin-bottom: 40px;
+  letter-spacing: 4px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.clients-content p {
+  font-size: clamp(20px, 2.2vw, 30px); /* slightly bigger */
+  line-height: 2;
+  letter-spacing: 0.6px;
+  margin: 14px 0;
+}
+
+.clients::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200px;
+  width: 100%;
+  background: linear-gradient(to bottom, #000, transparent);
+  pointer-events: none;
+}
+
+.clients::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  height: 200px;
+  width: 100%;
+  background: linear-gradient(to top, #000, transparent);
+  pointer-events: none;
+}
+
+
 .clients-list {
-  font-size: 40px;
-  line-height: 1.4;
+  text-align: center;
+  font-size: 28px;
+  line-height: 2.2;
+  font-weight: 500;
   color: #ddd;
 }
 
@@ -764,9 +816,9 @@ p {
   </section>
 <div class="section-divider"></div>
 
- <section class="clients">
+ <section class="clients page">
   <div class="container">
-    <p class="section-label">TRUSTED BY</p>
+    <p class="section-label">SELECTED COLLABORATIONS</p>
 
     <div class="clients-list">
       <div class="row">Evolve Back • Ayana Resorts • Global Village Dubai</div>
