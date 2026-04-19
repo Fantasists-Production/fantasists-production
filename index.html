@@ -283,7 +283,7 @@
 
     .work-header {
       text-align: center;
-      padding: 120px 40px 40px;
+      padding: 0 40px 20px;
       font-family: 'Figtree', sans-serif;
       font-size: 12px;
       letter-spacing: 0.22em;
@@ -353,45 +353,112 @@
   transition: all 0.4s ease;
     }
 
-    /* ── ABOUT ── */
-    #about {
-      background: #000;
-      padding: 140px 80px 140px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+    /* GLOBAL */
+section {
+  padding: 180px 0;
+}
 
-    .about-label {
-      font-family: 'Figtree', sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      color: var(--dim);
-      margin-bottom: 80px;
-      padding-bottom: 20px;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      padding-top: 20px;
-      display: inline-block;
-    }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
 
-    .about-body p {
-      font-family: 'DM Sans', sans-serif;
-      font-size: clamp(22px, 3vw, 38px);
-      font-weight: 300;
-      line-height: 1.55;
-      max-width: 720px;
-      margin-bottom: 1.4em;
-    }
+/* LABEL */
+.section-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #888;
+  margin-bottom: 40px;
+}
 
-    .about-tagline {
-      font-size: clamp(13px, 1.2vw, 16px) !important;
-      color: var(--dim) !important;
-      margin-top: 20px;
-    }
+/* ========================= */
+/* CLIENTS */
+/* ========================= */
+
+.clients {
+  text-align: center;
+}
+
+.clients-list {
+  font-size: 40px;
+  line-height: 1.4;
+  color: #ddd;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+
+/* ========================= */
+/* WHAT WE CREATE */
+/* ========================= */
+
+.what-we-create {
+  text-align: left;
+}
+
+.big-heading {
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #fff;
+  max-width: 900px;
+  margin-bottom: 40px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #333;
+  margin: 40px 0;
+}
+
+.text-block {
+  max-width: 700px;
+}
+
+.text-block p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #aaa;
+  margin-bottom: 20px;
+}
+
+
+/* ========================= */
+/* ABOUT */
+/* ========================= */
+
+.about {
+  text-align: left;
+}
+
+.about-heading {
+  font-size: 42px;
+  line-height: 1.3;
+  color: #fff;
+  max-width: 800px;
+  margin-bottom: 30px;
+}
+
+.about-sub {
+  font-size: 18px;
+  color: #aaa;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+.tagline {
+  font-size: 14px;
+  color: #666;
+  letter-spacing: 1px;
+}
 
     /* ── CONTACT ── */
     #contact {
-      background: radial-gradient(circle at center, #111 0%, #000 70%);
-      min-height: 80vh;
+      
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -459,30 +526,127 @@
   height: auto;
   aspect-ratio: 9/16; }
     }
-    /* === CLIENTS SECTION === */
 
-.clients {
-  padding: 100px 0;
-  background: #000;
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+/* ===== SECTION SPACING ===== */
+section {
+  padding: 140px 0;
+  position: relative;
+}
+
+/* ===== WHAT WE CREATE FIX ===== */
+.what-we-create {
   text-align: center;
 }
 
-.clients .section-label {
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: #888;
-  margin-bottom: 20px;
-  text-transform: uppercase;
+.what-we-create .container {
+  max-width: 900px;
 }
 
-.clients-list {
-  font-size: 28px;
-  line-height: 1.8;
+.text-block {
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+/* ===== ABOUT EXTRA SPACE ===== */
+.about {
+  padding-top: 260px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 20px;
+}
+
+.center {
+  text-align: center;
   max-width: 900px;
   margin: 0 auto;
-  color: #fff;
-  font-weight: 500;
 }
+
+.big-title {
+  font-size: 48px;
+  line-height: 1.3;
+  font-weight: 500;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #333;
+  margin: 30px auto;
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: #aaa;
+  margin-bottom: 16px;
+}
+
+.tagline {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
+
+.hero-text h1 {
+  font-size: 64px;
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 60px;
+}
+
+.hero-text p {
+  font-size: 20px;
+  color: #ccc;
+}
+
+#work {
+  display: block;
+  min-height: auto;
+}
+
   </style>
 </head>
 <body>
@@ -495,9 +659,10 @@
 </a>
 
     <ul class="nav-links">
-      <li><a href="#work">WORK</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#contact">CONTACT</a></li>
+      <a href="#work">WORK</a>
+  <a href="#services">WHAT WE CREATE</a>
+  <a href="#about">ABOUT</a>
+  <a href="#contact">CONTACT</a>
     </ul>
   </nav>
 
@@ -540,10 +705,10 @@
     <img class="cinematic-media" src="cinematic.jpg" alt="Cinematic landscape">
     <div class="cinematic-overlay"></div>
     <div class="cinematic-content">
-      <div class="cinematic-text reveal">
-        <p>Every place has a story.</p>
-        <p>We make you feel it.</p>
-      </div>
+      <div class="hero-text">
+  <h1>Every place has a story.</h1>
+  <h1>We make you feel it.</h1>
+</div>
     </div>
   </section>
 
@@ -597,30 +762,73 @@
 
     </div>
   </section>
+<div class="section-divider"></div>
 
- <section class="clients fade-section">
+ <section class="clients">
   <div class="container">
-    <p class="section-label">SELECTED COLLABORATIONS</p>
+    <p class="section-label">TRUSTED BY</p>
 
-    <h2 class="clients-list">
-      Evolve Back • Ayana Resorts • Global Village Dubai • Air India • Incredible India • Coca-Cola • ICC T20 • Skoda • Nescafe • Dabur • Hero
-    </h2>
+    <div class="clients-list">
+      <div class="row">Evolve Back • Ayana Resorts • Global Village Dubai</div>
+      <div class="row">Air India • Incredible India • Coca-Cola</div>
+      <div class="row">ICC T20 • Skoda • Nescafe • Dabur • Hero</div>
+    </div>
   </div>
 </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <span class="about-label reveal">ABOUT</span>
-    <div class="about-body">
-      <p class="reveal">Fantasists Production is a cinematic storytelling studio focused on creating immersive visual experiences across travel, culture, and human emotion.</p>
-      <p class="reveal">Every frame is crafted with intention — blending direction, production, and post into one seamless vision.</p>
-      <p class="about-tagline reveal">We don't chase trends. We chase truth.</p>
-    </div>
-  </section>
+<div class="section-divider"></div>
+
+<section id="services" class="page">
+  <div class="container center">
+
+    <div class="section-label">WHAT WE CREATE</div>
+
+    <h1 class="big-title">
+      We craft cinematic brand films that elevate luxury, travel, and culture into unforgettable visual experiences.
+    </h1>
+
+    <div class="divider"></div>
+
+    <p>
+      From hotels and resorts to global campaigns, we create films that connect emotionally and position brands at a higher level.
+    </p>
+
+    <p>
+      Every project is handled end-to-end — from concept to final delivery — with a singular cinematic vision.
+    </p>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section id="about" class="page">
+  <div class="container center">
+
+    <div class="section-label">ABOUT</div>
+
+    <h1 class="big-title">
+      Fantasists Production is a cinematic storytelling studio focused on creating immersive visual experiences across travel, culture, and human emotion.
+    </h1>
+
+    <p>
+      Every frame is crafted with intention — blending direction, production, and post into one seamless vision.
+    </p>
+
+    <p class="tagline">
+      We don’t chase trends. We chase truth.
+    </p>
+
+  </div>
+</section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="contact-heading reveal">Let's create something<br>unforgettable.</h2>
+  <section id="contact" class="page">
+  <div class="container center">
+
+    <div class="section-label">CONTACT</div>
+
+    <h1 class="big-title">Let's create something<br>unforgettable.</h1>
     <a class="contact-email" href="mailto:hello@fantasistsproduction.com">hello@fantasistsproduction.com</a>
   </section>
 
@@ -655,6 +863,21 @@ video.addEventListener('loadeddata', () => {
 
   }, 700); // 0.7 sec poster hold
 
+});
+const rows = document.querySelectorAll('.row');
+
+window.addEventListener('scroll', () => {
+  const trigger = window.innerHeight * 0.85;
+
+  rows.forEach((row, index) => {
+    const top = row.getBoundingClientRect().top;
+
+    if (top < trigger) {
+      setTimeout(() => {
+        row.classList.add('visible');
+      }, index * 200);
+    }
+  });
 });
 </script>
 </body>
