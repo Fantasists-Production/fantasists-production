@@ -34,49 +34,166 @@
       text-decoration: none;
     }
 
-    /* NAVIGATION */
+
+    /* =========================
+       NAVIGATION
+    ========================= */
 
     .nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 30px 60px;
-      mix-blend-mode: normal;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.65), transparent);
+      height: 90px;
+      padding: 0 42px;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.65),
+        transparent
+      );
     }
 
-  .nav-logo img {
-    width: 70px;
-  height: auto;
-    display: block;
-}
+    .nav-logo img {
+      width: 70px;
+      height: auto;
+      display: block;
+    }
 
-   .nav-links {
-    display: flex;
-    gap: 48px;
-    align-items: center;
-}
+    .nav-links {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+    }
 
-  .nav-links a {
-    color: var(--white);
-    text-decoration: none;
-    font-family: 'Figtree', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    opacity: 0.85;
-    transition: opacity 0.2s;
-    padding: 25px 50px;
-}
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Figtree', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+      padding: 25px 50px;
+    }
 
     .nav-links a:hover {
+      opacity: 1;
+    }
+
+
+    /* =========================
+       WORK MENU
+    ========================= */
+
+    .work-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: #000;
+      padding: 38px 60px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition:
+        opacity 0.4s ease,
+        transform 0.5s ease,
+        visibility 0.4s ease;
+      overflow-y: auto;
+    }
+
+    .work-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .work-menu-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+
+    .work-menu-top span,
+    .work-menu-top button {
+      font-family: 'Figtree', sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: #777;
+    }
+
+    .work-menu-top button {
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+    }
+
+    .work-menu-top button:hover {
       color: #fff;
     }
 
-    /* PROJECT HEADER */
+    .work-menu-projects {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .work-project {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      align-items: start;
+      gap: 30px;
+      padding: 32px 0;
+      border-top: 1px solid #1b1b1b;
+      text-decoration: none;
+      color: #fff;
+      transition: opacity 0.3s ease;
+    }
+
+    .work-project:last-child {
+      border-bottom: 1px solid #1b1b1b;
+    }
+
+    .work-project:hover {
+      opacity: 0.55;
+    }
+
+    .work-project .project-number {
+      font-family: 'Figtree', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: #555;
+      padding-top: 9px;
+      margin: 0;
+    }
+
+    .work-project h2 {
+      margin: 0;
+      font-family: 'Figtree', sans-serif;
+      font-size: clamp(28px, 3.2vw, 48px);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+
+    .work-project p {
+      margin: 12px 0 0;
+      font-family: 'Figtree', sans-serif;
+      font-size: 12px;
+      color: #666;
+      letter-spacing: 0.03em;
+    }
+
+
+    /* =========================
+       PROJECT HEADER
+    ========================= */
 
     .project-header {
       padding: 180px 40px 80px;
@@ -106,20 +223,34 @@
       color: #777;
     }
 
-    /* HERO VIDEO */
+
+    /* =========================
+       PROJECT VIDEOS
+    ========================= */
 
     .project-video {
       width: 100%;
+      aspect-ratio: 16 / 9;
       background: #000;
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+
+    .project-video:last-of-type {
+      margin-bottom: 0;
     }
 
     .project-video video {
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
     }
 
-    /* DESCRIPTION */
+
+    /* =========================
+       DESCRIPTION
+    ========================= */
 
     .project-description {
       max-width: 900px;
@@ -142,7 +273,10 @@
       max-width: 850px;
     }
 
-    /* FOOTER */
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     .project-footer {
       border-top: 1px solid #181818;
@@ -170,7 +304,10 @@
       color: #555;
     }
 
-    /* MOBILE */
+
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 700px) {
 
@@ -190,6 +327,7 @@
       .nav-links a {
         font-size: 8px;
         letter-spacing: 1.3px;
+        padding: 25px 0;
       }
 
       .project-header {
@@ -212,42 +350,37 @@
       .project-footer {
         padding: 30px 22px;
       }
+
+      .work-menu {
+        padding: 30px 25px;
+      }
+
+      .work-menu-top {
+        margin-bottom: 60px;
+      }
+
+      .work-project {
+        grid-template-columns: 35px 1fr;
+        gap: 15px;
+        padding: 25px 0;
+      }
+
+      .work-project h2 {
+        font-size: 25px;
+      }
+
+      .work-project p {
+        font-size: 11px;
+        margin-top: 8px;
+      }
     }
-
-/* HOMEPAGE NAVIGATION MATCH */
-
-.nav {
-    height: 90px;
-    padding: 0 42px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 48px;
-    align-items: center;
-}
-
-.nav-links a {
-    color: var(--white) !important;
-    text-decoration: none;
-    font-family: 'Figtree', sans-serif;
-    font-size: 13px !important;
-    font-weight: 400;
-    letter-spacing: 0.12em !important;
-    text-transform: uppercase !important;
-    opacity: 0.85;
-    transition: opacity 0.2s;
-    padding: 25px 50px;
-}
-
-.nav-links a:hover {
-    opacity: 1;
-}
 
   </style>
 </head>
 
+
 <body>
+
 
   <!-- NAVIGATION -->
 
@@ -258,14 +391,94 @@
     </a>
 
     <div class="nav-links">
-      <a href="index.html#work">Work</a>
-      <a href="index.html#stills">Stills</a>
-      <a href="index.html#services">Services</a>
-      <a href="index.html#about">About</a>
-      <a href="index.html#contact">Contact</a>
+
+      <a href="#" id="work-menu-trigger">
+        Work
+      </a>
+
+      <a href="index.html#stills">
+        Stills
+      </a>
+
+      <a href="index.html#services">
+        Services
+      </a>
+
+      <a href="index.html#about">
+        About
+      </a>
+
+      <a href="index.html#contact">
+        Contact
+      </a>
+
     </div>
 
   </nav>
+
+
+  <!-- WORK MENU -->
+
+  <div class="work-menu" id="work-menu">
+
+    <div class="work-menu-top">
+      <span>SELECTED WORK</span>
+      <button id="work-menu-close">CLOSE</button>
+    </div>
+
+    <div class="work-menu-projects">
+
+      <a href="evolve-back.html" class="work-project">
+        <span class="project-number">01</span>
+        <div>
+          <h2>Evolve Back Kamalapura Palace</h2>
+          <p>Hampi, India</p>
+        </div>
+      </a>
+
+      <a href="raj-palace.html" class="work-project">
+        <span class="project-number">02</span>
+        <div>
+          <h2>The Raj Palace</h2>
+          <p>Jaipur, India</p>
+        </div>
+      </a>
+
+      <a href="ajit-bhawan.html" class="work-project">
+        <span class="project-number">03</span>
+        <div>
+          <h2>Ajit Bhawan</h2>
+          <p>Jodhpur, India</p>
+        </div>
+      </a>
+
+      <a href="pench-tree-lodge.html" class="work-project">
+        <span class="project-number">04</span>
+        <div>
+          <h2>Pench Tree Lodge</h2>
+          <p>Pench National Park, India</p>
+        </div>
+      </a>
+
+      <a href="waghoba.html" class="work-project">
+        <span class="project-number">05</span>
+        <div>
+          <h2>Waghoba Eco Lodge</h2>
+          <p>Tadoba, India</p>
+        </div>
+      </a>
+
+      <a href="new-world-phu-quoc.html" class="work-project">
+        <span class="project-number">06</span>
+        <div>
+          <h2>New World Phu Quoc Resort</h2>
+          <p>Phu Quoc, Vietnam</p>
+        </div>
+      </a>
+
+    </div>
+
+  </div>
 
 
   <!-- PROJECT HEADER -->
@@ -277,9 +490,9 @@
     </div>
 
     <h1 class="project-title">
-  New World<br>
-  Phu Quoc Resort
-</h1>
+      New World<br>
+      Phu Quoc Resort
+    </h1>
 
     <div class="project-location">
       Phu Quoc, Vietnam
@@ -290,23 +503,24 @@
 
   <!-- FILMS -->
 
-<section class="project-video">
+  <section class="project-video">
 
-  <video controls playsinline>
-    <source src="new-world-phu-quoc-brand.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+    <video controls playsinline>
+      <source src="new-world-phu-quoc-brand.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-</section>
+  </section>
 
-<section class="project-video">
 
-  <video controls playsinline>
-    <source src="new-world-phu-quoc-hero.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <section class="project-video">
 
-</section>
+    <video controls playsinline>
+      <source src="new-world-phu-quoc-hero.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+  </section>
 
 
   <!-- PROJECT DESCRIPTION -->
@@ -318,10 +532,10 @@
     </div>
 
     <p>
-  A cinematic visual story capturing the tropical landscape,
-  architecture, experiences and atmosphere of New World Phu Quoc Resort
-  on the island of Phu Quoc, Vietnam.
-</p>
+      A cinematic visual story capturing the tropical landscape,
+      architecture, experiences and atmosphere of New World Phu Quoc Resort
+      on the island of Phu Quoc, Vietnam.
+    </p>
 
   </section>
 
@@ -330,7 +544,10 @@
 
   <footer class="project-footer">
 
-    <a href="index.html#work">
+    <a
+      href="#"
+      onclick="event.preventDefault(); document.getElementById('work-menu').classList.add('is-open'); document.body.style.overflow='hidden';"
+    >
       ← Back to Work
     </a>
 
@@ -339,6 +556,80 @@
     </div>
 
   </footer>
+
+
+  <!-- WORK MENU JAVASCRIPT -->
+
+  <script>
+
+    const workMenu =
+      document.getElementById('work-menu');
+
+    const workMenuTrigger =
+      document.getElementById('work-menu-trigger');
+
+    const workMenuClose =
+      document.getElementById('work-menu-close');
+
+    const workMenuProjects =
+      document.querySelectorAll('.work-project');
+
+
+    /* OPEN FROM TOP WORK */
+
+    workMenuTrigger.addEventListener('click', (e) => {
+
+      e.preventDefault();
+
+      workMenu.classList.add('is-open');
+
+      document.body.style.overflow = 'hidden';
+
+    });
+
+
+    /* CLOSE */
+
+    workMenuClose.addEventListener('click', () => {
+
+      workMenu.classList.remove('is-open');
+
+      document.body.style.overflow = '';
+
+    });
+
+
+    /* PROJECT LINKS */
+
+    workMenuProjects.forEach(project => {
+
+      project.addEventListener('click', () => {
+
+        workMenu.classList.remove('is-open');
+
+        document.body.style.overflow = '';
+
+      });
+
+    });
+
+
+    /* ESC KEY */
+
+    document.addEventListener('keydown', (e) => {
+
+      if (e.key === 'Escape') {
+
+        workMenu.classList.remove('is-open');
+
+        document.body.style.overflow = '';
+
+      }
+
+    });
+
+  </script>
+
 
 </body>
 </html>
