@@ -82,33 +82,8 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-
-  opacity: 0;
-  transition: opacity 1.2s ease;
-
-  z-index: 1; /* BELOW poster */
-
-  will-change: opacity;
-}
-
-/* when video is ready */
-.hero-media.is-loaded {
   opacity: 1;
-}
-
-/* POSTER (ON TOP) */
-.hero-poster {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-
-  z-index: 2; /* ABOVE video */
-
-  transition: opacity 0.6s ease;
-
+  z-index: 2;
 }
 
     /* placeholder gradient when no real image/video */
@@ -277,9 +252,9 @@
 }
 
     /* ── FEATURED WORK ── */
-    #work {
-      background: #000;
-    }
+    #featured-work {
+  background: #000;
+}
 
     .work-header {
       text-align: center;
@@ -296,12 +271,14 @@
     }
 
     .work-item {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      cursor: pointer;
-    }
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
 
     .work-item::after {
   content: "";
@@ -373,6 +350,150 @@ section {
   letter-spacing: 2px;
   color: #888;
   margin-bottom: 40px;
+}
+
+/* ========================= */
+/* STILLS / PHOTOGRAPHY */
+/* ========================= */
+
+#stills {
+  background: #000;
+  padding: 180px 0;
+}
+
+.stills-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.stills-header .section-label {
+  margin-bottom: 24px;
+  letter-spacing: 4px;
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.stills-title {
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 24px;
+}
+
+.stills-intro {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #888;
+}
+
+.stills-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.still-item {
+  position: relative;
+  overflow: hidden;
+  background: #111;
+}
+
+.still-item.large {
+  grid-column: span 2;
+}
+
+.still-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.still-item:hover img {
+  transform: scale(1.025);
+}
+
+.still-info {
+  padding: 18px 0 10px;
+}
+
+.still-brand {
+  font-family: 'Figtree', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.still-location {
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: #666;
+}
+
+.stills-projects {
+  max-width: 1100px;
+  margin: 100px auto 0;
+  padding: 0 40px;
+  text-align: center;
+}
+
+.stills-projects-label {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #666;
+  margin-bottom: 28px;
+}
+
+.stills-projects-list {
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(16px, 2vw, 24px);
+  line-height: 2;
+  color: #aaa;
+}
+
+.stills-projects-list span {
+  transition: color 0.3s ease;
+}
+
+.stills-projects-list span:hover {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+
+  #stills {
+    padding: 120px 0;
+  }
+
+  .stills-header {
+    margin-bottom: 60px;
+    padding: 0 28px;
+  }
+
+  .stills-grid {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+    gap: 20px;
+  }
+
+  .still-item.large {
+    grid-column: span 1;
+  }
+
+  .stills-projects {
+    margin-top: 80px;
+    padding: 0 24px;
+  }
+
 }
 
 /* ========================= */
@@ -694,9 +815,381 @@ p {
   color: #ccc;
 }
 
-#work {
+#featured-work {
   display: block;
   min-height: auto;
+}
+
+/* ========================= */
+/* WHAT WE CREATE — NEW */
+/* ========================= */
+
+.services-section {
+  background: #000;
+  padding: 180px 0;
+}
+
+.services-section .container {
+  max-width: 1100px;
+}
+
+.services-heading {
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(42px, 6vw, 76px);
+  font-weight: 500;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: 100px;
+}
+
+.services-list {
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.service-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 40px;
+  padding: 42px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  transition: padding 0.4s ease;
+}
+
+.service-row:hover {
+  padding-left: 12px;
+}
+
+.service-number {
+  font-family: 'Figtree', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: #666;
+  padding-top: 8px;
+}
+
+.service-content h3 {
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(24px, 3vw, 38px);
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 14px;
+}
+
+.service-content p {
+  max-width: 600px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+
+  .services-section {
+    padding: 120px 0;
+  }
+
+  .services-heading {
+    margin-bottom: 70px;
+  }
+
+  .service-row {
+    grid-template-columns: 45px 1fr;
+    gap: 15px;
+    padding: 32px 0;
+  }
+
+  .service-content h3 {
+    font-size: 25px;
+  }
+
+  .service-content p {
+    font-size: 15px;
+  }
+
+}
+
+.about-founder {
+  margin-top: 28px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #555;
+}
+
+/* ========================= */
+/* PHOTOGRAPHY / STILLS */
+/* ========================= */
+
+#stills {
+  background: #000;
+  padding: 180px 0 200px;
+}
+
+.stills-header {
+  text-align: center;
+  padding: 0 40px 100px;
+}
+
+.stills-label {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  color: #777;
+  margin-bottom: 28px;
+}
+
+.stills-title {
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(48px, 7vw, 92px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #fff;
+  margin: 0;
+}
+
+.stills-intro {
+  max-width: 520px;
+  margin: 32px auto 0;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #777;
+}
+
+/* GALLERY */
+
+.stills-gallery {
+  width: 100%;
+}
+
+.stills-project {
+  margin-bottom: 160px;
+}
+
+.stills-project:last-child {
+  margin-bottom: 0;
+}
+
+.stills-project-title {
+  max-width: 1400px;
+  margin: 0 auto 28px;
+  padding: 0 40px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: #777;
+}
+
+.stills-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  padding: 0 40px;
+}
+
+.still {
+  overflow: hidden;
+  background: #111;
+}
+
+.still img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.still:hover img {
+  transform: scale(1.025);
+}
+
+/* FEATURE IMAGE */
+
+.stills-feature {
+  max-width: 1400px;
+  margin: 0 auto 24px;
+  padding: 0 40px;
+}
+
+.stills-feature .still {
+  width: 100%;
+}
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  #stills {
+    padding: 120px 0 140px;
+  }
+
+  .stills-header {
+    padding: 0 24px 70px;
+  }
+
+  .stills-title {
+    font-size: clamp(46px, 15vw, 72px);
+  }
+
+  .stills-intro {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .stills-project {
+    margin-bottom: 100px;
+  }
+
+  .stills-project-title {
+    padding: 0 24px;
+    margin-bottom: 20px;
+  }
+
+  .stills-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 24px;
+    margin-bottom: 16px;
+  }
+
+  .stills-feature {
+    padding: 0 24px;
+    margin-bottom: 16px;
+  }
+
+}
+
+/* ── WORK MENU ── */
+
+.work-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #000;
+  padding: 38px 60px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.5s ease,
+    visibility 0.4s ease;
+  overflow-y: auto;
+}
+
+.work-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.work-menu-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.work-menu-top span,
+.work-menu-top button {
+  font-family: 'Figtree', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: #777;
+}
+
+.work-menu-top button {
+  background: none;
+  border: none;
+  padding: 10px 0;
+  cursor: pointer;
+  color: #fff;
+  transition: opacity 0.25s ease;
+}
+
+.work-menu-top button:hover {
+  opacity: 0.5;
+}
+
+.work-menu-projects {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.work-project {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  align-items: start;
+  gap: 30px;
+  padding: 32px 0;
+  border-top: 1px solid #1b1b1b;
+  text-decoration: none;
+  color: #fff;
+  transition: opacity 0.3s ease;
+}
+
+.work-project:last-child {
+  border-bottom: 1px solid #1b1b1b;
+}
+
+.work-project:hover {
+  opacity: 0.55;
+}
+
+.project-number {
+  font-family: 'Figtree', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #555;
+  padding-top: 9px;
+}
+
+.work-project h2 {
+  margin: 0;
+  font-family: 'Figtree', sans-serif;
+  font-size: clamp(28px, 3.2vw, 48px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.work-project p {
+  margin: 12px 0 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 0.03em;
+}
+
+
+/* ── MOBILE WORK MENU ── */
+
+@media (max-width: 700px) {
+
+  .work-menu {
+    padding: 30px 25px;
+  }
+
+  .work-menu-top {
+    margin-bottom: 60px;
+  }
+
+  .work-project {
+    grid-template-columns: 35px 1fr;
+    gap: 15px;
+    padding: 25px 0;
+  }
+
+  .work-project h2 {
+    font-size: 25px;
+  }
+
+  .work-project p {
+    font-size: 11px;
+    margin-top: 8px;
+  }
+
 }
 
   </style>
@@ -724,28 +1217,87 @@ p {
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <!-- Logo SVG (approximated from your icon) -->
-    <a href="#">
-  <img src="logo.png" class="logo">
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" class="logo">
+  </a>
+
+  <div class="nav-links">
+    <a href="#" id="work-menu-trigger">WORK</a>
+    <a href="#stills">STILLS</a>
+    <a href="#services">SERVICES</a>
+    <a href="#about">ABOUT</a>
+    <a href="#contact">CONTACT</a>
+  </div>
+</nav>
+
+
+<!-- WORK MENU -->
+<div class="work-menu" id="work-menu">
+
+  <div class="work-menu-top">
+    <span>SELECTED WORK</span>
+    <button id="work-menu-close">CLOSE</button>
+  </div>
+
+  <div class="work-menu-projects">
+
+    <a href="evolve-back.html" class="work-project">
+  <span class="project-number">01</span>
+  <div>
+    <h2>Evolve Back Kamalapura Palace</h2>
+    <p>Hampi, India</p>
+  </div>
 </a>
 
-    <ul class="nav-links">
-      <a href="#work">WORK</a>
-  <a href="#services">WHAT WE CREATE</a>
-  <a href="#about">ABOUT</a>
-  <a href="#contact">CONTACT</a>
-    </ul>
-  </nav>
+    <a href="raj-palace.html" class="work-project">
+  <span class="project-number">02</span>
+  <div>
+    <h2>The Raj Palace</h2>
+    <p>Jaipur, India</p>
+  </div>
+</a>
+
+    <a href="ajit-bhawan.html" class="work-project">
+  <span class="project-number">03</span>
+  <div>
+    <h2>Ajit Bhawan</h2>
+    <p>Jodhpur, India</p>
+  </div>
+</a>
+
+    <a href="pench-tree-lodge.html" class="work-project">
+  <span class="project-number">04</span>
+  <div>
+    <h2>Pench Tree Lodge</h2>
+    <p>Pench National Park, India</p>
+  </div>
+</a>
+
+    <a href="waghoba.html" class="work-project">
+  <span class="project-number">05</span>
+  <div>
+    <h2>Waghoba Eco Lodge</h2>
+    <p>Tadoba, India</p>
+  </div>
+</a>
+
+    <a href="new-world-phu-quoc.html" class="work-project">
+  <span class="project-number">06</span>
+  <div>
+    <h2>New World Phu Quoc Resort</h2>
+    <p>Phu Quoc, Vietnam</p>
+  </div>
+</a>
+
+  </div>
+
+</div>
 
   <!-- HERO -->
   <section id="hero">
 
-  <!-- Poster -->
-  <img src="poster.jpg" class="hero-poster" />
-
-  <!-- Video -->
   <video class="hero-media" autoplay muted loop playsinline preload="auto">
     <source src="Hero.mp4" type="video/mp4">
   </video>
@@ -786,24 +1338,10 @@ p {
   </section>
 
   <!-- FEATURED WORK -->
-  <section id="work">
+  <section id="featured-work">
     <p class="work-header reveal">FEATURED WORK</p>
     <div class="work-grid">
 
-      <!-- Project 1 -->
-      <div class="work-item">
-        <!--
-          REPLACE: <video class="work-item-media" autoplay muted loop playsinline>
-                     <source src="palace-experience.mp4" type="video/mp4">
-                   </video>
-        -->
-        <video class="work-item-media" autoplay muted loop playsinline>
-  <source src="palace-experience.mp4" type="video/mp4">
-</video>
-        <div class="work-item-bottom">
-          <p class="work-item-title">THE PALACE EXPERIENCE</p>
-        </div>
-      </div>
 
       <!-- Project 2 -->
       <div class="work-item">
@@ -835,41 +1373,383 @@ p {
   </section>
 <div class="section-divider"></div>
 
- <section class="clients page">
-  <div class="container">
-    <p class="section-label">SELECTED COLLABORATIONS</p>
+<!-- PHOTOGRAPHY / STILLS -->
+<section id="stills">
 
-    <div class="clients-list">
-      <div class="row">Evolve Back • Ayana Resorts • Global Village Dubai</div>
-      <div class="row">Air India • Incredible India • Coca-Cola</div>
-      <div class="row">ICC T20 • Skoda • Nescafe • Dabur • Hero</div>
-    </div>
+  <div class="stills-header">
+    <div class="stills-label">PHOTOGRAPHY</div>
+    <h2 class="stills-title">Stills</h2>
+    <p class="stills-intro">
+      A collection of moments, places and details captured across our
+      hospitality and destination stories.
+    </p>
   </div>
+
+
+  <div class="stills-gallery">
+
+    <!-- AJIT BHAWAN -->
+
+    <div class="stills-project">
+
+      <div class="stills-project-title">
+        AJIT BHAWAN · JODHPUR, INDIA
+      </div>
+
+      <div class="stills-feature">
+        <div class="still">
+          <img src="stills/ajit-bhawan-01.jpg" alt="Ajit Bhawan, Jodhpur">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/ajit-bhawan-02.jpg" alt="Ajit Bhawan, Jodhpur">
+        </div>
+        <div class="still">
+          <img src="stills/ajit-bhawan-03.jpg" alt="Ajit Bhawan, Jodhpur">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/ajit-bhawan-04.jpg" alt="Ajit Bhawan, Jodhpur">
+        </div>
+        <div class="still">
+          <img src="stills/ajit-bhawan-05.jpg" alt="Ajit Bhawan, Jodhpur">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/ajit-bhawan-06.jpg" alt="Ajit Bhawan, Jodhpur">
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- EVOLVE BACK -->
+
+    <div class="stills-project">
+
+      <div class="stills-project-title">
+        EVOLVE BACK · HAMPi, INDIA
+      </div>
+
+      <div class="stills-feature">
+        <div class="still">
+          <img src="stills/evolve-back-01.jpg" alt="Evolve Back, Hampi">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/evolve-back-02.jpg" alt="Evolve Back, Hampi">
+        </div>
+        <div class="still">
+          <img src="stills/evolve-back-03.jpg" alt="Evolve Back, Hampi">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/evolve-back-04.jpg" alt="Evolve Back, Hampi">
+        </div>
+        <div class="still">
+          <img src="stills/evolve-back-05.jpg" alt="Evolve Back, Hampi">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/evolve-back-06.jpg" alt="Evolve Back, Hampi">
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- NEW WORLD PHU QUOC -->
+
+    <div class="stills-project">
+
+      <div class="stills-project-title">
+        NEW WORLD PHU QUOC · VIETNAM
+      </div>
+
+      <div class="stills-feature">
+        <div class="still">
+          <img src="stills/new-world-phu-quoc-01.jpg" alt="New World Phu Quoc Resort, Vietnam">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/new-world-phu-quoc-02.jpg" alt="New World Phu Quoc Resort, Vietnam">
+        </div>
+        <div class="still">
+          <img src="stills/new-world-phu-quoc-03.jpg" alt="New World Phu Quoc Resort, Vietnam">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/new-world-phu-quoc-04.jpg" alt="New World Phu Quoc Resort, Vietnam">
+        </div>
+        <div class="still">
+          <img src="stills/new-world-phu-quoc-05.jpg" alt="New World Phu Quoc Resort, Vietnam">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/new-world-phu-quoc-06.jpg" alt="New World Phu Quoc Resort, Vietnam">
+        </div>
+        <div class="still">
+          <img src="stills/new-world-phu-quoc-07.jpg" alt="New World Phu Quoc Resort, Vietnam">
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- PENCH TREE LODGE -->
+
+    <div class="stills-project">
+
+      <div class="stills-project-title">
+        PENCH TREE LODGE · PUGDUNDEE SAFARIS · INDIA
+      </div>
+
+      <div class="stills-feature">
+        <div class="still">
+          <img src="stills/pench-tree-lodge-01.jpg" alt="Pench Tree Lodge">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/pench-tree-lodge-02.jpg" alt="Pench Tree Lodge">
+        </div>
+        <div class="still">
+          <img src="stills/pench-tree-lodge-03.jpg" alt="Pench Tree Lodge">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/pench-tree-lodge-04.jpg" alt="Pench Tree Lodge">
+        </div>
+        <div class="still">
+          <img src="stills/pench-tree-lodge-05.jpg" alt="Pench Tree Lodge">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/pench-tree-lodge-06.jpg" alt="Pench Tree Lodge">
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- WAGHOBA ECO LODGE -->
+
+    <div class="stills-project">
+
+      <div class="stills-project-title">
+        WAGHOBA ECO LODGE · PUGDUNDEE SAFARIS · TADOBA, INDIA
+      </div>
+
+      <div class="stills-feature">
+        <div class="still">
+          <img src="stills/waghoba-eco-lodge-01.jpg" alt="Waghoba Eco Lodge, Tadoba">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/waghoba-eco-lodge-02.jpg" alt="Waghoba Eco Lodge, Tadoba">
+        </div>
+        <div class="still">
+          <img src="stills/waghoba-eco-lodge-03.jpg" alt="Waghoba Eco Lodge, Tadoba">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/waghoba-eco-lodge-04.jpg" alt="Waghoba Eco Lodge, Tadoba">
+        </div>
+        <div class="still">
+          <img src="stills/waghoba-eco-lodge-05.jpg" alt="Waghoba Eco Lodge, Tadoba">
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- THE RAJ PALACE -->
+
+    <div class="stills-project">
+
+      <div class="stills-project-title">
+        THE RAJ PALACE · JAIPUR, INDIA
+      </div>
+
+      <div class="stills-feature">
+        <div class="still">
+          <img src="stills/raj-palace-01.jpg" alt="The Raj Palace, Jaipur">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/raj-palace-02.jpg" alt="The Raj Palace, Jaipur">
+        </div>
+        <div class="still">
+          <img src="stills/raj-palace-03.jpg" alt="The Raj Palace, Jaipur">
+        </div>
+      </div>
+
+      <div class="stills-row">
+        <div class="still">
+          <img src="stills/raj-palace-04.jpg" alt="The Raj Palace, Jaipur">
+        </div>
+        <div class="still">
+          <img src="stills/raj-palace-05.jpg" alt="The Raj Palace, Jaipur">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
 <div class="section-divider"></div>
 
-<section id="services" class="page">
-  <div class="container center">
+<section class="clients page">
+
+  <div class="container">
+
+    <div class="section-label">SELECTED CLIENTS</div>
+
+    <div class="clients-list">
+
+      <div class="row">
+        Evolve Back · The Raj Palace · Ajit Bhawan
+      </div>
+
+      <div class="row">
+        Pugdundee Safaris · New World Phu Quoc · Ayana Resorts
+      </div>
+
+      <div class="row">
+        Air India · Incredible India · Coca-Cola · Paytm
+      </div>
+
+      <div class="row">
+        Dettol · Nescafé · Škoda · Dabur · Hero
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- WHAT WE CREATE -->
+
+<section id="services" class="services-section">
+
+  <div class="container">
 
     <div class="section-label">WHAT WE CREATE</div>
 
-    <h1 class="big-title">
-      We craft cinematic brand films that elevate luxury, travel, and culture into unforgettable visual experiences.
-    </h1>
+    <h2 class="services-heading">
+      Visual stories built<br>
+      around your world.
+    </h2>
 
-    <div class="divider"></div>
+    <div class="services-list">
 
-    <p>
-      From hotels and resorts to global campaigns, we create films that connect emotionally and position brands at a higher level.
-    </p>
+      <div class="service-row">
+        <span class="service-number">01</span>
+        <div class="service-content">
+          <h3>Brand Films</h3>
+          <p>
+            Cinematic films that capture the identity, atmosphere and
+            emotion behind a brand.
+          </p>
+        </div>
+      </div>
 
-    <p>
-      Every project is handled end-to-end — from concept to final delivery — with a singular cinematic vision.
-    </p>
+      <div class="service-row">
+        <span class="service-number">02</span>
+        <div class="service-content">
+          <h3>Hospitality Films</h3>
+          <p>
+            Immersive films for hotels, resorts and lodges that turn
+            a stay into a visual experience.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-number">03</span>
+        <div class="service-content">
+          <h3>Destination Stories</h3>
+          <p>
+            Films that bring destinations, cultures and landscapes
+            to life through cinematic storytelling.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-number">04</span>
+        <div class="service-content">
+          <h3>Social Films</h3>
+          <p>
+            Short-form films and vertical content designed for
+            modern digital platforms.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-number">05</span>
+        <div class="service-content">
+          <h3>Photography</h3>
+          <p>
+            Editorial stills and visual assets created to complement
+            the larger story.
+          </p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <span class="service-number">06</span>
+        <div class="service-content">
+          <h3>Creative Direction</h3>
+          <p>
+            From concept and visual language to production and
+            post-production, every frame is shaped with intention.
+          </p>
+        </div>
+      </div>
+
+    </div>
 
   </div>
+
 </section>
+
+<div class="section-divider"></div>
 
 <div class="section-divider"></div>
 
@@ -879,29 +1759,62 @@ p {
     <div class="section-label">ABOUT</div>
 
     <h1 class="big-title">
-      Fantasists Production is a cinematic storytelling studio focused on creating immersive visual experiences across travel, culture, and human emotion.
-    </h1>
+  Fantasists Production is an independent
+  visual storytelling studio creating films
+  and stills for hospitality, travel, and brands.
+</h1>
 
-    <p>
-      Every frame is crafted with intention — blending direction, production, and post into one seamless vision.
-    </p>
+<p>
+  From heritage palaces and wilderness lodges
+  to destinations across the world, we create
+  cinematic stories that capture the character
+  of a place and the feeling of being there.
+</p>
 
-    <p class="tagline">
-      We don’t chase trends. We chase truth.
-    </p>
+<p>
+  From concept and production to photography
+  and post-production, every project is shaped
+  with a singular visual point of view.
+</p>
+
+    <p class="about-tagline">
+  Stories with a sense of place.
+</p>
+
+<p class="about-founder">
+  Founded by Karan Sharma
+</p>
 
   </div>
 </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="page">
+ <!-- CONTACT -->
+
+<section id="contact" class="contact-section page">
+
   <div class="container center">
 
     <div class="section-label">CONTACT</div>
 
-    <h1 class="big-title">Let's create something<br>unforgettable.</h1>
-    <a class="contact-email" href="mailto:hello@fantasistsproduction.com">hello@fantasistsproduction.com</a>
-  </section>
+    <h1 class="contact-title">
+      Let's create something<br>
+      unforgettable.
+    </h1>
+
+    <p class="contact-intro">
+      Have a destination, property or brand that deserves
+      a story? We'd love to hear about it.
+    </p>
+
+    <a
+      class="contact-email"
+      href="mailto:hello@fantasistsproduction.com">
+      hello@fantasistsproduction.com
+    </a>
+
+  </div>
+
+</section>
 
   <!-- FOOTER -->
   <footer>
@@ -921,20 +1834,6 @@ p {
   }, { threshold: 0.15 });
   reveals.forEach(el => observer.observe(el));
 
-  // HERO VIDEO FADE
-  const video = document.querySelector('.hero-media');
-const poster = document.querySelector('.hero-poster');
-
-video.addEventListener('loadeddata', () => {
-
-  setTimeout(() => {
-
-    video.classList.add('is-loaded');
-    poster.style.opacity = '0';
-
-  }, 700); // 0.7 sec poster hold
-
-});
 const rows = document.querySelectorAll('.row');
 
 window.addEventListener('scroll', () => {
@@ -950,6 +1849,41 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+// WORK MENU
+
+const workMenu = document.getElementById('work-menu');
+const workMenuTrigger = document.getElementById('work-menu-trigger');
+const workMenuClose = document.getElementById('work-menu-close');
+const workMenuProjects = document.querySelectorAll('.work-project');
+
+workMenuTrigger.addEventListener('click', (e) => {
+  e.preventDefault();
+  workMenu.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+});
+
+workMenuClose.addEventListener('click', () => {
+  workMenu.classList.remove('is-open');
+  document.body.style.overflow = '';
+});
+
+workMenuProjects.forEach(project => {
+  project.addEventListener('click', () => {
+    workMenu.classList.remove('is-open');
+    document.body.style.overflow = '';
+  });
+});
+
+// Close with ESC key
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    workMenu.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+});
+
 </script>
 </body>
 </html>
